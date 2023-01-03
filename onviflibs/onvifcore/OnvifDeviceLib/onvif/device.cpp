@@ -17,9 +17,9 @@ Device::~Device()
 }
 
 
-void Device::getDeviceInformation(QString devServiceURL) {
+void Device::getDeviceInformation(QString devServiceURL, std::string& strFirmwareVersion, std::string& strSerialNumber, std::string& strHardwareID, std::string& strManufacturer) {
 
-    qDebug() << "device manager service test: getDeviceInformation";
+    //qDebug() << "device manager service test: getDeviceInformation";
 
     DeviceBindingProxy d;
 
@@ -28,11 +28,15 @@ void Device::getDeviceInformation(QString devServiceURL) {
 
     if (d.GetDeviceInformation(devServiceURL.toStdString().data(), NULL, &in, out) == SOAP_OK) {
         //ok
-        qDebug() << (char*)out.soap->data;
+        /*qDebug() << (char*)out.soap->data;
         qDebug() << out.FirmwareVersion.data();
         qDebug() << out.SerialNumber.data();
         qDebug() << out.HardwareId.data();
-        qDebug() << out.Manufacturer.data();
+        qDebug() << out.Manufacturer.data();*/
+        strFirmwareVersion = out.FirmwareVersion;
+        strSerialNumber = out.SerialNumber;
+        strHardwareID = out.HardwareId;
+        strManufacturer = out.Manufacturer;
 
     } else {
         //error

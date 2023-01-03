@@ -3,7 +3,7 @@
 
 #include <QString>
 
-class Event
+class __declspec(dllexport) Event
 {
 public:
     Event();

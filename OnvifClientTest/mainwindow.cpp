@@ -20,10 +20,10 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     int  _metadataVersion = 1;
-    char* _xaddr="http://localhost/service";
-    char* _type="\"http://schemas.xmlsoap.org/ws/2006/02/devprof\":device";
-    char* _scope="scope";
-    char* _endpoint="urn";
+    char* _xaddr=(char*)"http://localhost/service";
+    char* _type=(char*)"\"http://schemas.xmlsoap.org/ws/2006/02/devprof\":device";
+    char* _scope=(char*)"scope";
+    char* _endpoint=(char*)"urn";
     discoveryObj = new DiscoveryObj(CLIENT_MODE, _metadataVersion, _xaddr, _type, _scope, _endpoint);
     connect(discoveryObj,SIGNAL(discoveredDevice(DescDevice)) ,this,SLOT(onDiscoveredDevice(DescDevice)));
     ui->setupUi(this);
@@ -72,8 +72,8 @@ void MainWindow::on_btnGetMediaURL_clicked()
 
         qDebug() << "For device " << device.xAddrs;
 
-        //QVector<std::string> tokens = Media::getProfileTokens(device.xAddrs);
-        QVector<std::string> tokens = Media::getProfileTokens("http://172.16.6.143/onvif/media_service");
+        QVector<std::string> tokens = Media::getProfileTokens(device.xAddrs);
+        //QVector<std::string> tokens = Media::getProfileTokens("http://172.16.6.143/onvif/media_service");
         //QVector<std::string> tokens = Media::getProfileTokens("http://127.0.0.1:8080");
 
         for(int j =0; j< tokens.size(); ++j){
@@ -81,8 +81,8 @@ void MainWindow::on_btnGetMediaURL_clicked()
 
         }
         if(tokens.size() > 0){
-            //qDebug() <<"URL = "<<  Media::getStreamURL(device.xAddrs, tokens.at(0)).data();
-            qDebug() <<"URL = "<<  Media::getStreamURL("http://172.16.6.143/onvif/media_service", tokens.at(0)).data();
+            qDebug() <<"URL = "<<  Media::getStreamURL(device.xAddrs, tokens.at(0)).data();
+            //qDebug() <<"URL = "<<  Media::getStreamURL("http://172.16.6.143/onvif/media_service", tokens.at(0)).data();
         }
     }
 }

@@ -51,6 +51,7 @@ A commercial use license is available from Genivia, Inc., contact@genivia.com
 --------------------------------------------------------------------------------
 */
 
+#define SOL_TCP IPPROTO_TCP
 #define GSOAP_LIB_VERSION 20822
 
 #ifdef AS400

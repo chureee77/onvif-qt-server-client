@@ -1,5 +1,7 @@
 TEMPLATE = subdirs
 
+INCLUDEPATH += D:\Project\inc
+
 SUBDIRS +=  onvifcore/OnvifDeviceLib \
             onvifcore/OnvifDiscoveryLib \
             onvifcore/OnvifEventLib \
@@ -15,4 +17,5 @@ SUBDIRS +=  onvifcore/OnvifDeviceLib \
             OnvifReplayControlLib \
             OnvifVideoAnalyticsDeviceLib
 
+QMAKE_CXXFLAGS += /bigobj
 

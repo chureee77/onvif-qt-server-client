@@ -392,6 +392,8 @@ const char *to_ts_URL = "urn:schemas-xmlsoap-org:ws:2005:04:discovery";
 const char *to_ts_URL = "urn:docs-oasis-open-org:ws-dd:ns:discovery:2009:01";
 #endif
 
+#define SOL_TCP IPPROTO_TCP
+
 /******************************************************************************\
  *
  *	WS-Discovery AppSequence State
@@ -1555,11 +1557,26 @@ soap_wsdd_reset_AppSequence(struct soap *soap)
     soap->header->wsdd__AppSequence = NULL;
 }
 
+#include <windows.h>
+
+void usleep(__int64 usec)
+{
+    HANDLE timer;
+    LARGE_INTEGER ft;
+
+    ft.QuadPart = -(10*usec); // Convert to 100 nanosecond interval, negative value indicates relative time
+
+    timer = CreateWaitableTimer(NULL, TRUE, NULL);
+    SetWaitableTimer(timer, &ft, 0, NULL, NULL, 0);
+    WaitForSingleObject(timer, INFINITE);
+    CloseHandle(timer);
+}
+
 static void
 soap_wsdd_delay(struct soap *soap)
 {
     //useconds_t delay = 1000*((unsigned int)soap_random % SOAP_WSDD_APP_MAX_DELAY); //my comment, I commented this. removed 1000
-    useconds_t delay = ((unsigned int)soap_random % SOAP_WSDD_APP_MAX_DELAY);
+    unsigned long delay = ((unsigned int)soap_random % SOAP_WSDD_APP_MAX_DELAY);
   printf("Delay = %d\n", delay );
 #ifdef __MINGW32__
   Sleep(delay);

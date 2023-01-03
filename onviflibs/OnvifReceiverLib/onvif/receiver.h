@@ -3,7 +3,7 @@
 
 #include <QString>
 #include <string>
-class Receiver
+class __declspec(dllexport) Receiver
 {
 public:
     Receiver();

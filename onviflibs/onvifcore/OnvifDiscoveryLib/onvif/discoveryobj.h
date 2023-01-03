@@ -11,11 +11,31 @@ enum DiscoveryMode{
     SERVER_MODE, CLIENT_MODE
 };
 
-class DiscoveryObj: public QObject{
+class IEvtDiscoveryObj
+{
+public:
+    virtual void discoveredDevice(DescDevice device) {}
+};
 
-    Q_OBJECT   
+class __declspec(dllexport) DiscoveryObj/*: public QObject*/{
+    
+    /*Q_OBJECT   
 signals:
-    void discoveredDevice(DescDevice);
+    void discoveredDevice(DescDevice device);*/
+public:
+    void discoveredDevice(DescDevice device)
+    {
+        m_pIEvt->discoveredDevice(device);
+    }
+    
+private:
+    IEvtDiscoveryObj* m_pIEvt = nullptr;
+public:
+    void IEvtSet(IEvtDiscoveryObj* pI)
+    {
+        assert(!m_pIEvt);
+        m_pIEvt = pI;
+    }
 
 private:
     DiscoveryThread discoveryThread;

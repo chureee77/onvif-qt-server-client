@@ -3,7 +3,7 @@
 
 #include <QString>
 #include <string>
-class Analytics
+class __declspec(dllexport) Analytics
 {
 public:
     Analytics();

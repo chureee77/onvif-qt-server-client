@@ -3,7 +3,7 @@
 
 #include <QString>
 #include <string>
-class RecordingSearch
+class __declspec(dllexport) RecordingSearch
 {
 public:
     RecordingSearch();

@@ -3,7 +3,7 @@
 
 #include <QString>
 #include <string>
-class ReplayControl
+class __declspec(dllexport) ReplayControl
 {
 public:
     ReplayControl();

@@ -2,7 +2,7 @@
 #define PTZ_H
 
 #include <QString>
-class PTZ
+class __declspec(dllexport) PTZ
 {
 public:
     PTZ();

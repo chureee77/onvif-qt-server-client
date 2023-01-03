@@ -3,7 +3,7 @@
 
 #include <QString>
 #include <string>
-class VideoAnalyticsDevice
+class __declspec(dllexport) VideoAnalyticsDevice
 {
 public:
     VideoAnalyticsDevice();

@@ -3,12 +3,12 @@
 
 #include <QString>
 
-class Device
+class __declspec(dllexport) Device
 {
 public:
     Device();
     ~Device();
-    static void getDeviceInformation(QString devServiceURL);
+    static void getDeviceInformation(QString devServiceURL, std::string& strFirmwareVersion, std::string& strSerialNumber, std::string& strHardwareID, std::string& strManufacturer);
     static void getUses(QString devServiceURL);
 };
 

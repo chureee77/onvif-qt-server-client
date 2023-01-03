@@ -3,7 +3,8 @@
 
 #include <QString>
 #include <string>
-class Media
+#include <vector>
+class __declspec(dllexport) Media
 {
 public:
     Media();

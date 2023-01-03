@@ -14,10 +14,11 @@ Media::~Media()
 {
 
 }
+
 QVector<std::string>  Media::getProfileTokens(QString devServiceURL) {
 
     QVector<std::string> tokens;
-    qDebug() << "media service test: getProfileTokens";
+    //qDebug() << "media service test: getProfileTokens";
 
     MediaBindingProxy p;
 
@@ -44,7 +45,7 @@ QVector<std::string>  Media::getProfileTokens(QString devServiceURL) {
 std::string Media::getStreamURL(QString devServiceURL, std::string profileToken) {
 
     std::string uri;
-    qDebug() << "media service test: getStreamURL";
+    //qDebug() << "media service test: getStreamURL";
 
     MediaBindingProxy p;
 

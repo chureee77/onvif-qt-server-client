@@ -3,7 +3,7 @@
 
 #include <QString>
 #include <string>
-class Imaging
+class __declspec(dllexport) Imaging
 {
 public:
     Imaging();

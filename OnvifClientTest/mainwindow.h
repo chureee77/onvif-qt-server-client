@@ -49,6 +49,9 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
+
+protected:
+    virtual void discoveredDevice(DescDevice device) { onDiscoveredDevice(device); }
 };
 
 #endif // MAINWINDOW_H

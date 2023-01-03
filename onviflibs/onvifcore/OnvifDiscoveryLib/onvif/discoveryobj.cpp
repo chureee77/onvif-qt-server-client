@@ -9,7 +9,8 @@
 **
 ** -------------------------------------------------------------------------*/
 #include "../soap/wsddapi.h"
-#include <getopt.h>
+//#include <getopt.h>
+#include "D:\Project\inc\_getopt.h"
 #include "discoveryobj.h"
 #include <QDebug>
 #include "soap/wsdd.nsmap"
@@ -131,6 +132,8 @@ int DiscoveryObj::sendHello()
         soap_print_fault(soap, stderr);
     }
     soap_end(soap);
+
+    return res;
 }
 
 int DiscoveryObj::sendBye()
@@ -152,6 +155,8 @@ int DiscoveryObj::sendBye()
         soap_print_fault(soap, stderr);
     }
     soap_end(soap);
+
+    return res;
 }
 
 
@@ -211,7 +216,7 @@ void wsdd_event_ProbeMatches(struct soap *soap, unsigned int InstanceId, const c
             //qDebug()<< "Socopes inside " << device.scopes;
 
             //DiscoveryObj::getDiscoveryObj()->discoveredDevice(device);
-            DiscoveryObj::theDiscovery->discoveredDevice(device);
+            DiscoveryObj::theDiscovery->discoveredDevice(device);            
             //my code end
 
 

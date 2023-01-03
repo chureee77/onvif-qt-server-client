@@ -3,7 +3,7 @@
 
 #include <QString>
 #include <string>
-class Display
+class __declspec(dllexport) Display
 {
 public:
     Display();

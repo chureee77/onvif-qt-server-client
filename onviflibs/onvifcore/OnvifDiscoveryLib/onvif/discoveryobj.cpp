@@ -66,6 +66,7 @@ int DiscoveryObj::sendProb()
       
 	// create soap instance
 	struct soap* serv = soap_new1(SOAP_IO_UDP); 
+    serv->connect_flags = SO_BROADCAST;
 	if (!soap_valid_socket(soap_bind(serv, NULL, 0, 1000)))
 	{
 		soap_print_fault(serv, stderr);
